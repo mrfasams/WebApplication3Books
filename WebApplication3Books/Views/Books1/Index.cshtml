@@ -5,10 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Добре дошли в Моята библиотека!</h1>
+<h4>В Моята библиотека посетителите имат възможността да се запознаят с творчеството на относително голям брой български и чуждестранни автори.</h4>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Добави книга</a>
 </p>
 <table class="table">
     <thead>
@@ -44,9 +45,9 @@
                 @Html.DisplayFor(modelItem => item.type)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Промняна</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Детайли</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Изтрий</a>
             </td>
         </tr>
 }

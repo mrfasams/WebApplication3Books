@@ -1,14 +1,14 @@
 ﻿@model WebApplication3Books.Models.Book
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Детайли";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h1>Детайли</h1>
 
 <div>
-    <h4>Book</h4>
+    <h4>Книга</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -38,6 +38,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Редактиране</a> |
+    <a asp-action="Index">Назад към списък с книги</a>
 </div>
