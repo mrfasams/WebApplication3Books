@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication3Books.Data;
 using WebApplication3Books.Models;
@@ -22,9 +17,9 @@ namespace WebApplication3Books.Controllers
         // GET: Books1
         public async Task<IActionResult> Index()
         {
-              return _context.Book != null ? 
-                          View(await _context.Book.ToListAsync()) :
-                          Problem("Entity set 'WebApplication3BooksContext.Book'  is null.");
+            return _context.Book != null ?
+                        View(await _context.Book.ToListAsync()) :
+                        Problem("Entity set 'WebApplication3BooksContext.Book'  is null.");
         }
 
         // GET: Books1/Details/5
@@ -150,14 +145,39 @@ namespace WebApplication3Books.Controllers
             {
                 _context.Book.Remove(book);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BookExists(int id)
         {
-          return (_context.Book?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Book?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        /* public async Task<IActionResult> Search()
+         {
+             return _context.Book != null ?
+                         View(await _context.Book.ToListAsync()) :
+                         Problem("Entity set 'WebApplication3BooksContext.Book'  is null.");
+         }
+        */
+
+        public async Task<IActionResult> Search(string searchString)
+        {
+            // Use LINQ to get list of genres.
+            IQueryable<string> genreQuery = from m in _context.Book
+
+                                            select m.Title;
+            var books = from m in _context.Book
+                        select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                books = books.Where(s => s.Title!.Contains(searchString) || s.author!.Contains(searchString));
+            }
+
+            return View(await books.ToListAsync());
         }
     }
 }

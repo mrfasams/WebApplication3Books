@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApplication3Books.Models.Book>
+
+@{
+    ViewData["Title"] = "Търсене";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Търсене в Моята библиотека!</h4>
+
+<!--<form asp-controller="Book1" asp-action="Search" >
+    <p>
+        Заглавие: <input type="text" name="SearchString" />
+        <input type="submit" value="Търси" />
+    </p>
+
+</form>
+-->
+@using (Html.BeginForm("Search","Books1",FormMethod.Get))
+ @using (Html.BeginForm()){    
+         <p> Заглавие или име на автор: @Html.TextBox("SearchString")   
+         <input type="submit" value="Търси" /></p> 
+        } 
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <!--@Html.DisplayNameFor(model => model.Title)-->
+                Заглавие
+            </th>
+            <th>
+               <!-- @Html.DisplayNameFor(model => model.author)-->
+               Автор
+            </th>
+            <th>
+               <!--  @Html.DisplayNameFor(model => model.type)-->
+               Жанр
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Изтегли файл</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Детайли</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Изтрий</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
