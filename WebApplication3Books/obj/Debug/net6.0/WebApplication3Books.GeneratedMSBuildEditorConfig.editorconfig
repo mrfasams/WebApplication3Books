@@ -1,0 +1,76 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WebApplication3Books
+build_property.RootNamespace = WebApplication3Books
+build_property.ProjectDir = C:\Users\nikoleta.todorova\Documents\NBU\asp_net\moi_proekt_3_web_app\WebApplication3Books\WebApplication3Books\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\nikoleta.todorova\Documents\NBU\asp_net\moi_proekt_3_web_app\WebApplication3Books\WebApplication3Books
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/Books1/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va3MxXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/Books1/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va3MxXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/Books1/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va3MxXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/Books1/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va3MxXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/Books1/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va3MxXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/Books/Books.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va3NcQm9va3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/Books/Random.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va3NcUmFuZG9tLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/Books/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va3NcVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nikoleta.todorova/Documents/NBU/asp_net/moi_proekt_3_web_app/WebApplication3Books/WebApplication3Books/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-xe9krlkqrc
