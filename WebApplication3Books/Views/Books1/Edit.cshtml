@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" method="POST" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -25,6 +25,11 @@
                 <span asp-validation-for="author" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="description" class="control-label"></label>
+                <input asp-for="description" class="form-control" />
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="isbn" class="control-label"></label>
                 <input asp-for="isbn" class="form-control" />
                 <span asp-validation-for="isbn" class="text-danger"></span>
@@ -34,8 +39,19 @@
                 <input asp-for="type" class="form-control" />
                 <span asp-validation-for="type" class="text-danger"></span>
             </div>
+
+             <div class="form-group">
+                 Файл : 
+               @Html.DisplayFor(Book => Book.fileName) @Html.DisplayFor(Book => Book.Extension)
+            </div>
+             <div class="form-group"> 
+                  
+               <input type="file" name="files" multiple  />
+             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                editBookDatabase
+                <button class="btn btn-success" type="submit" asp-controller="Books1" asp-action="editBookDatabase">Запази</button>
+               <!-- <input type="submit" value="Save" class="btn btn-primary" /> -->
             </div>
         </form>
     </div>

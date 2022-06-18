@@ -51,7 +51,7 @@ namespace WebApplication3Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,author,isbn,type,Content")] Book book, IFormFile uploadFile)
+        public async Task<IActionResult> Create([Bind("Id,Title,author,description,isbn,type,Content")] Book book, IFormFile uploadFile)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace WebApplication3Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,author,isbn,type")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,author,description,isbn,type,Content,FileType")] Book book, List<IFormFile> file)
         {
             if (id != book.Id)
             {
@@ -155,13 +155,6 @@ namespace WebApplication3Books.Controllers
             return (_context.Book?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        /* public async Task<IActionResult> Search()
-         {
-             return _context.Book != null ?
-                         View(await _context.Book.ToListAsync()) :
-                         Problem("Entity set 'WebApplication3BooksContext.Book'  is null.");
-         }
-        */
 
         public async Task<IActionResult> Search(string searchString)
         {
@@ -174,41 +167,14 @@ namespace WebApplication3Books.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                books = books.Where(s => s.Title!.Contains(searchString) || s.author!.Contains(searchString));
+                books = books.Where(s => s.Title!.Contains(searchString) || s.author!.Contains(searchString)).OrderBy(book => book.Title);
             }
 
             return View(await books.ToListAsync());
         }
 
-        [HttpPost]
-        public async Task<IActionResult> UploadToDatabase(List<IFormFile> files, string description)
-        {
-            foreach (var file in files)
-            {
-                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
-                var extension = Path.GetExtension(file.FileName);
-                var fileModel = new Book
-                {
-                    author = "tt",
-                    isbn = "ttt",
-                    Title = "ttt",
-                    type = "etrret",
-                    FileType = file.ContentType,
-                    Extension = extension,
-                    fileName = fileName,
 
-                };
-                using (var dataStream = new MemoryStream())
-                {
-                    await file.CopyToAsync(dataStream);
-                    fileModel.Content = dataStream.ToArray();
-                }
-                _context.Update(fileModel);
-                await _context.SaveChangesAsync();
-            }
-            return RedirectToAction(nameof(Index));
-        }
-
+        //this method is used to create new book with uploded file
         [HttpPost]
         public async Task<IActionResult> UploadBookToDatabase(List<IFormFile> files, Book book)
         {
@@ -225,6 +191,7 @@ namespace WebApplication3Books.Controllers
                     FileType = file.ContentType,
                     Extension = extension,
                     fileName = fileName,
+                    description = book.description
 
                 };
                 using (var dataStream = new MemoryStream())
@@ -245,6 +212,60 @@ namespace WebApplication3Books.Controllers
             if (book == null) return null;
             return File(book.Content, "application/force-download", book.fileName + book.Extension);
             // return File(book.Content, book.FileType, book.fileName + book.Extension);
+        }
+        //get some book for recommended
+        public async Task<IActionResult> Random()
+        {
+            int first = 13;
+            int second = 11;
+            int third = 3;
+
+
+            // Use LINQ to get list of tree books.
+
+            var books = from m in _context.Book
+                        select m;
+
+
+            books = books.Where(x => (x.Id == first || x.Id == second || x.Id == second)).OrderBy(book => book.Title);
+
+
+            return View(await books.ToListAsync());
+        }
+
+        //this method is used to edit new book with uploded file
+        [HttpPost]
+        public async Task<IActionResult> editBookDatabase(List<IFormFile> files, Book book)
+
+        {//if no new file is uploded , keep current 
+            if (files.Count == 0)
+            {
+                var item = await _context.Book.SingleOrDefaultAsync(x => x.Id == book.Id);
+                book.Content = item.Content;
+                book.fileName = item.fileName;
+                book.Extension = item.Extension;
+                book.FileType = item.FileType;
+                //remove from context because error occure on update
+                _context.Remove(item);
+            }
+            foreach (var file in files)
+            {
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                var extension = Path.GetExtension(file.FileName);
+
+                book.FileType = file.ContentType;
+                book.fileName = fileName;
+                book.Extension = extension;
+                using (var dataStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(dataStream);
+                    book.Content = dataStream.ToArray();
+                }
+
+            }
+            _context.Update(book);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
