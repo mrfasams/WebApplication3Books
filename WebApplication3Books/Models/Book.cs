@@ -13,6 +13,13 @@
 
         public string type { get; set; }
 
+        public byte[] Content { get; set; }
+
+        public string FileType { get; set; }
+        public string Extension { get; set; }
+
+        public string fileName { get; set; }
+
 
     }
 }

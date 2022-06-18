@@ -51,7 +51,7 @@ namespace WebApplication3Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,author,isbn,type")] Book book)
+        public async Task<IActionResult> Create([Bind("Id,Title,author,isbn,type,Content")] Book book, IFormFile uploadFile)
         {
             if (ModelState.IsValid)
             {
@@ -178,6 +178,73 @@ namespace WebApplication3Books.Controllers
             }
 
             return View(await books.ToListAsync());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadToDatabase(List<IFormFile> files, string description)
+        {
+            foreach (var file in files)
+            {
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                var extension = Path.GetExtension(file.FileName);
+                var fileModel = new Book
+                {
+                    author = "tt",
+                    isbn = "ttt",
+                    Title = "ttt",
+                    type = "etrret",
+                    FileType = file.ContentType,
+                    Extension = extension,
+                    fileName = fileName,
+
+                };
+                using (var dataStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(dataStream);
+                    fileModel.Content = dataStream.ToArray();
+                }
+                _context.Update(fileModel);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadBookToDatabase(List<IFormFile> files, Book book)
+        {
+            foreach (var file in files)
+            {
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                var extension = Path.GetExtension(file.FileName);
+                var fileModel = new Book
+                {
+                    author = book.author,
+                    isbn = book.isbn,
+                    Title = book.Title,
+                    type = book.type,
+                    FileType = file.ContentType,
+                    Extension = extension,
+                    fileName = fileName,
+
+                };
+                using (var dataStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(dataStream);
+                    fileModel.Content = dataStream.ToArray();
+                }
+                _context.Update(fileModel);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public async Task<IActionResult> DownloadFileFromDatabase(int id)
+        {
+
+            var book = await _context.Book.Where(x => x.Id == id).FirstOrDefaultAsync();
+            if (book == null) return null;
+            return File(book.Content, "application/force-download", book.fileName + book.Extension);
+            // return File(book.Content, book.FileType, book.fileName + book.Extension);
         }
     }
 }

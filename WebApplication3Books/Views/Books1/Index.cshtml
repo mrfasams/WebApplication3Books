@@ -9,22 +9,30 @@
 <h4>В Моята библиотека посетителите имат възможността да се запознаят с творчеството на относително голям брой български и чуждестранни автори.</h4>
 
 <p>
-    <a asp-action="Create">Добави книга</a>
+    <a class="btn btn-primary" asp-action="Create">Добави книга</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+               <!-- @Html.DisplayNameFor(model => model.Title)-->
+               Заглавие
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.author)
+                Автор
+             <!--  @Html.DisplayNameFor(model => model.author)-->
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.isbn)
+
+             @Html.DisplayNameFor(model => model.isbn)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.type)
+                Жанр
+              <!--  @Html.DisplayNameFor(model => model.type)-->
+            </th>
+             <th>
+               Файл формат
+              <!--  @Html.DisplayNameFor(model => model.type)-->
             </th>
             <th></th>
         </tr>
@@ -45,11 +53,17 @@
                 @Html.DisplayFor(modelItem => item.type)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Промняна</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Детайли</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Изтрий</a>
+                @Html.DisplayFor(modelItem => item.FileType)
+            </td>
+            <td>
+                <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.Id">Промняна</a> 
+                <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.Id">Детайли</a> 
+                <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.Id">Изтрий</a> 
+                <a class="btn btn-success" asp-action="DownloadFileFromDatabase" asp-route-id="@item.Id">Свали</a>
+            
             </td>
         </tr>
 }
     </tbody>
 </table>
+

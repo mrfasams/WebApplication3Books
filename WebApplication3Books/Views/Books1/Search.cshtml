@@ -21,6 +21,13 @@
          <input type="submit" value="Търси" /></p> 
         } 
 
+        <form method="post" enctype="multipart/form-data">
+    <input type="file" name="files" multiple required />
+    <input type="text" autocomplete="off" placeholder="Enter File Description" name="description" required />
+   
+    <button class="btn btn-success" type="submit" asp-controller="Books1" asp-action="UploadToDatabase">Upload to Database</button>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -51,11 +58,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.type)
             </td>
+          
+
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Изтегли файл</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Детайли</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Изтрий</a>
-            </td>
+     <a class="btn btn-success" asp-action="DownloadFileFromDatabase" asp-route-id="@item.Id">Свали</a>
+                    </td>
         </tr>
 }
     </tbody>
